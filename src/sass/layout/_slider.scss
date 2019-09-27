@@ -1,0 +1,89 @@
+#slide-1 { background-image: url(../img/main-slide-1.png); }
+#slide-2 { background-image: url(../img/main-slide-2.png); }
+#slide-3 { background-image: url(../img/main-slide-3.png); }
+
+.slider {
+	position: absolute;	
+  left: 0;
+  right: 0;
+  top: 130px;
+	bottom: 0;
+	z-index: $zIndexSlider;
+
+	&__group {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__slide {
+		height: 0;
+		background: no-repeat center center /cover;
+		transition: opacity linear 0.9s;
+		opacity: 0.5;
+		visibility: hidden;		
+
+		&_active {
+			height: 100%;
+			opacity: 1;
+			visibility: visible;			
+		}
+	}
+	
+	&__wrap {	height: 100%;	}
+
+	&__description {		
+		position: absolute;
+		right: 0;
+		top: 50%;
+		width: 510px;
+		padding: 13px 18px 17px 28px;
+		margin-right: -20px;
+		background-color: #ffffffcc;
+	}
+	
+	&__headline {
+		margin: 0 0 25px 0;
+		font-size: 30px;
+		font-family: "Playfair-BoldItalic";		
+		text-transform: uppercase;
+		color: $colorFontDark;
+	}
+
+	&__text {
+		font-size: 18px;
+		font-family: "OpenSans-Regular";
+		line-height: 1.3;
+		color: $colorFontDark;
+	}
+		
+	&__paging {
+		position: absolute; 
+		bottom: 35px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	&__dots {
+		@include clearfix;		
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		list-style: none;
+	}
+
+	&__dot {
+		float: left;
+		width: 14px;
+		height: 14px;		
+		margin: 0 10px 0 0;
+		border-radius: 50%;
+		border: 2px solid $colorBaseDark;
+		background-color: $colorBaseLight;
+		cursor: pointer;
+		
+		&:last-of-type { margin-right: 0;	}	
+		&:hover {	background-color: $colorStateHover; }
+		
+		&_active { background-color: $colorStateActive; }
+	}
+}

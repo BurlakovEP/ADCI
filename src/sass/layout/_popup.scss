@@ -1,0 +1,62 @@
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+  top: 0;
+  left: 0;
+  background-color: #ffffff99; 
+  z-index: $zIndexPopupBack;
+
+  &_visible { display: block; }
+  &_invisible { display: none; }
+
+  &__wrap {
+    position: relative;
+    width: 590px;    
+    margin: 0 auto;
+    top: 30%;
+    z-index: $zIndexPopupFront;
+    background-color: $colorSpecialDark;
+  }
+
+  &__name {
+    padding-top: 8px;
+    font-size: 24px;
+    line-height: 24px;
+    font-family: "Playfair-Bold";
+    text-transform: uppercase;    
+    text-align: center;
+    color: $colorFontLight;    
+  }
+
+  &__close {
+    position: absolute;
+    right: 16px;
+    top: 10px;  
+    width: 24px;
+    height: 24px;    
+    padding: 0;
+    border: none;
+    background: none;    
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      &:before, &:after { background-color: $colorStateHover; }
+    }
+
+    &:before, &:after {
+      position: absolute;
+      left: 11px;
+      bottom: 0px;
+      content: ' ';
+      height: 24px;
+      width: 2px;
+      background-color: $colorBaseLight;
+    }
+
+    &:before { transform: rotate(45deg); }    
+    &:after { transform: rotate(-45deg); }
+  }  
+}
+

@@ -1,0 +1,84 @@
+.footer {
+  padding-top: 37px;
+  height: 275px;  
+  position: relative;
+  z-index: $zIndexFooter;
+  background-color: $colorSpecialDark;
+
+  &__top {
+    @include clearfix;
+    width: 990px;
+    margin: 0 auto;
+  }
+
+  &__column {
+    width: 25%;
+    float: left;
+    padding: 0 30px;
+    
+    &-title {
+      font-size: 13px;
+      font-family: "Playfair-Bold";
+      margin-bottom: 25px;
+      color: $colorFontLight;
+      text-transform: uppercase;
+    }
+  }
+  
+  &__text {
+    font-size: 12px;
+    line-height: 1.4;
+    color: $colorFontLight;
+    text-align: left;    
+  }
+
+  &__info {
+    @include clearfix;
+    margin-top: 28px;
+  }
+
+  &__contacts { float: left; }
+
+  &__contact {
+    font-size: 12px;
+    line-height: 2;
+    margin-right: 10px;  
+    color: $colorFontLight;    
+    text-align: center;     
+  }
+
+  &__social {
+    float: left;
+    margin-left: 180px;
+
+    &-link {
+      float: left;
+      margin-right: 10px;
+
+      &:hover { opacity: 0.4; }
+    }
+  }
+
+  &__language {
+    float: right;
+
+    &-link {
+      float: left;  
+      font-size: 14px;
+      padding: 0 8px 0 8px;
+      border-right: 1px solid $colorBaseLight;
+      color: $colorFontLight;
+      text-transform: uppercase;
+      text-decoration: none;      
+      
+      &:last-of-type {
+        border-right: none;
+        padding-right: 0;
+      }
+
+      &:hover { color: $colorStateHover; }
+
+      &_active { color: $colorStateActive; }
+    }
+  }
+}

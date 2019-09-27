@@ -1,0 +1,24 @@
+@import 'normalize';
+@import 'abstracts/_fonts';
+@import 'abstracts/_mixins';
+@import 'abstracts/_variables';
+
+* { box-sizing: border-box; }
+
+html {  
+  font-family: 'OpenSans-Regular', "Helvetica", "Geneva", "Arial", sans-serif;
+  font-size: 14px;
+}
+
+body {   
+  min-width: 1250px;
+  background-color: $colorBaseLight;
+}
+
+@import 'base/_main';
+@import 'base/_footer';
+@import 'layout/_header';
+@import 'layout/_form';
+@import 'layout/_popup';
+@import 'layout/_slider';
+@import 'layout/_dropup';
