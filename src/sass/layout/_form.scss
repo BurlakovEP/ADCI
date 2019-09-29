@@ -1,31 +1,26 @@
 .form {
-  @include clearfix;
-  position: relative;  
-  padding: 0;
-  margin: 0;  
-  
-  &__column {
-    width: 50%;
-    float: left;    
-    margin: 22px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
-    &_left { padding-left: 40px; }
-    &_right { padding-right: 40px; }
-  }
-  
-  &__title {
-    font-size: 18px;
-    font-family: "Playfair-Bold";
-    margin: 0;
-    margin-bottom: 14px;
-    color: $colorFontLight;
-    text-transform: uppercase;  
+  @include mediaquery (xs) {
+    max-width: 90%;
+    margin: 0 auto;
   }
 
   &__block {
     padding: 0;
-    margin: 0 auto;
     width: 185px;
+
+    @include mediaquery (xs) { margin: 0 auto; }
+  }
+
+  &__title {
+    font-size: 18px;
+    font-family: "Playfair-Bold";
+    margin: 0 0 14px 0;
+    color: $colorFontLight;
+    text-transform: uppercase;  
   }
 
   &__field {    
@@ -33,7 +28,6 @@
     height: 31px;
     padding: 5px 10px;
     margin-bottom: 11px;
-    font-size: 16px;
     font-family: "OpenSans-Regular"; 
     border: none;
     color: $colorFontDark;
@@ -46,6 +40,11 @@
       background-color: $colorSpecialLight;
       &::placeholder { color: $colorFontDark; }
     }
+
+    @include mediaquery (sm) { font-size: 15px; }
+    @include mediaquery (md) { font-size: 14px; }
+    @include mediaquery (lg) { font-size: 14px; }
+    @include mediaquery (xl) { font-size: 16px; }
   }
 
   &__button {
@@ -64,7 +63,7 @@
   }
 
   &__note {
-    margin: 10px 0 0 0;
+    margin: 10px 0 15px 0;
     font-size: 12px;    
     font-family: "OpenSans-Regular";
     color: $colorSpecialLight;
@@ -72,7 +71,6 @@
    
   &__checkbox {
     display: none;
-    float: left;
 
     &:checked + .form__label:before {
       color: $colorFontDark;

@@ -11,22 +11,62 @@ window.onload = () => {
   
   document.querySelector('.navbar__list').addEventListener('click', setClass);
   document.querySelector('.footer__language').addEventListener('click', setClass);
-  function moveBlock(event) {
-    const dropup = event.target;
-    const dropupContent = document.querySelector('.dropup__content');
+  function toggleNavbar() {
+    const navbar = document.querySelector('.navbar');
   
-    if (dropup.classList.contains('dropup__button_open')) {
-      dropup.classList.remove('dropup__button_open');
-      dropup.classList.add('dropup__button_close');
-  
-      dropupContent.classList.remove('dropup__content_invisible');
-      dropupContent.classList.add('dropup__content_visible');
+    if (navbar.classList.contains('navbar_invisible')) {
+      navbar.classList.remove('navbar_invisible');
+      navbar.classList.add('navbar_visible');
     } else {
-      dropup.classList.remove('dropup__button_close');
-      dropup.classList.add('dropup__button_open');
+      navbar.classList.remove('navbar_visible');
+      navbar.classList.add('navbar_invisible');
+    }
+  }
   
-      dropupContent.classList.remove('dropup__content_visible');
-      dropupContent.classList.add('dropup__content_invisible');
+  document.querySelector('.header__toggle').addEventListener('click', toggleNavbar);
+  function moveBlock(event) {
+    const dropupButton = event.target;
+    const dropupContent = document.querySelector('.dropup__content');
+    let height = '';
+  
+    if (dropupButton.classList.contains('dropup__button_open')) {
+      dropupContent.style.height = 'auto';
+      height = parseInt(getComputedStyle(dropupContent).height, 10);
+      dropupContent.style.height = 0;
+  
+      moveSlide('up');
+    } else {
+      height = parseInt(getComputedStyle(dropupContent).height, 10);
+  
+      moveSlide('down');
+    }
+  
+    function moveSlide(vector) {
+      const start = Date.now();
+      const timeout = 600;
+      const timer = setInterval(() => {
+        const duration = Date.now() - start;
+        if (duration >= timeout) {
+          clearInterval(timer);
+          dropupContent.removeAttribute('style');
+          return;
+        }
+        animate(duration);
+      }, 20);
+  
+      function animate(duration) {
+        if (vector === 'up') {
+          dropupButton.className = 'dropup__button dropup__button_close';
+          dropupContent.style.height = `${duration / (timeout / height)}px`;
+          dropupContent.className = 'dropup__content dropup__content_visible';
+        }
+  
+        if (vector === 'down') {
+          dropupButton.className = 'dropup__button dropup__button_open';
+          dropupContent.style.height = `${height - duration / (timeout / height)}px`;
+          dropupContent.className = 'dropup__content dropup__content_invisible';
+        }
+      }
     }
   }
   

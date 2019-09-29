@@ -10,10 +10,7 @@ html {
   font-size: 14px;
 }
 
-body {   
-  min-width: 1250px;
-  background-color: $colorBaseLight;
-}
+body { background-color: $colorBaseLight; }
 
 @import 'base/_main';
 @import 'base/_footer';

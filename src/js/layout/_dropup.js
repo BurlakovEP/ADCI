@@ -1,19 +1,46 @@
 function moveBlock(event) {
-  const dropup = event.target;
+  const dropupButton = event.target;
   const dropupContent = document.querySelector('.dropup__content');
+  let height = '';
 
-  if (dropup.classList.contains('dropup__button_open')) {
-    dropup.classList.remove('dropup__button_open');
-    dropup.classList.add('dropup__button_close');
+  if (dropupButton.classList.contains('dropup__button_open')) {
+    dropupContent.style.height = 'auto';
+    height = parseInt(getComputedStyle(dropupContent).height, 10);
+    dropupContent.style.height = 0;
 
-    dropupContent.classList.remove('dropup__content_invisible');
-    dropupContent.classList.add('dropup__content_visible');
+    moveSlide('up');
   } else {
-    dropup.classList.remove('dropup__button_close');
-    dropup.classList.add('dropup__button_open');
+    height = parseInt(getComputedStyle(dropupContent).height, 10);
 
-    dropupContent.classList.remove('dropup__content_visible');
-    dropupContent.classList.add('dropup__content_invisible');
+    moveSlide('down');
+  }
+
+  function moveSlide(vector) {
+    const start = Date.now();
+    const timeout = 600;
+    const timer = setInterval(() => {
+      const duration = Date.now() - start;
+      if (duration >= timeout) {
+        clearInterval(timer);
+        dropupContent.removeAttribute('style');
+        return;
+      }
+      animate(duration);
+    }, 20);
+
+    function animate(duration) {
+      if (vector === 'up') {
+        dropupButton.className = 'dropup__button dropup__button_close';
+        dropupContent.style.height = `${duration / (timeout / height)}px`;
+        dropupContent.className = 'dropup__content dropup__content_visible';
+      }
+
+      if (vector === 'down') {
+        dropupButton.className = 'dropup__button dropup__button_open';
+        dropupContent.style.height = `${height - duration / (timeout / height)}px`;
+        dropupContent.className = 'dropup__content dropup__content_invisible';
+      }
+    }
   }
 }
 

@@ -1,84 +1,176 @@
 .footer {
   padding-top: 37px;
-  height: 275px;  
-  position: relative;
+  padding-bottom: 13px;
   z-index: $zIndexFooter;
   background-color: $colorSpecialDark;
 
-  &__top {
-    @include clearfix;
-    width: 990px;
+  &__benefits {
+    display: flex;    
+    flex-wrap: wrap;
     margin: 0 auto;
+
+    @include mediaquery (md) { justify-content: space-between; }
+    @include mediaquery (lg) { width: 77.5%; }
   }
 
-  &__column {
-    width: 25%;
-    float: left;
-    padding: 0 30px;
-    
-    &-title {
-      font-size: 13px;
-      font-family: "Playfair-Bold";
-      margin-bottom: 25px;
-      color: $colorFontLight;
-      text-transform: uppercase;
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;    
+
+    @include mediaquery (xs) {
+      flex-direction: column;
+      align-items: center;
     }
   }
-  
+}
+
+.section {
+
+  @include mediaquery (xs) {
+    width: 90%;
+    margin: 0 auto;
+
+    &:last-of-type { text-align: center; }
+  }
+
+  @include mediaquery (sm) {
+    width: 33.333333%;
+    padding: 0 10px;
+
+    &:last-of-type { margin: 0 auto; text-align: center;}
+  }
+
+  @include mediaquery (md) {
+    width: 20%;
+    padding: 0;
+
+    &:last-of-type { text-align: left; margin: 0;}
+  }
+
+  &__title {
+    font-size: 13px;
+    font-family: "Playfair-Bold";
+    color: $colorFontLight;
+    text-transform: uppercase;
+
+    @include mediaquery (xs) { margin-bottom: 10px; }
+    @include mediaquery (sm) { margin-bottom: 15px; }
+    @include mediaquery (md) { margin-bottom: 25px; }
+  }
+
   &__text {
     font-size: 12px;
     line-height: 1.4;
     color: $colorFontLight;
-    text-align: left;    
+    text-align: left;
+
+    @include mediaquery (xs) { margin-bottom: 15px; }
+    @include mediaquery (sm) { margin-bottom: 20px; }
+  }
+}
+
+.contacts {
+
+  @include mediaquery (md) { margin-bottom: 10px; }
+  @include mediaquery (xl) { flex-grow: 2; }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;   
+
+    @include mediaquery (xs) {
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    @include mediaquery (sm) { flex-direction: column; }
+    @include mediaquery (md) { flex-direction: row; }
   }
 
-  &__info {
-    @include clearfix;
-    margin-top: 28px;
-  }
-
-  &__contacts { float: left; }
-
-  &__contact {
+  &__item {
     font-size: 12px;
     line-height: 2;
-    margin-right: 10px;  
     color: $colorFontLight;    
-    text-align: center;     
+    text-align: center;
+    
+    @include mediaquery (xs) { margin-right: 0; }
+    @include mediaquery (sm) { margin-right: 10px; }
+    @include mediaquery (xl) { margin-right: 16px; }
+  }
+}
+
+.socials {
+
+  @include mediaquery (sm) { margin: 0 15px; }
+  @include mediaquery (xl) { flex-grow: 1; }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    @include mediaquery (xs) { margin-bottom: 15px; }    
   }
 
-  &__social {
-    float: left;
-    margin-left: 180px;
+  &__item {
 
-    &-link {
-      float: left;
+    @include mediaquery (xs) { 
+      margin-right: 10px; 
+      
+      &:last-of-type { margin-right: 0; }
+    }
+
+    @include mediaquery (sm) {
       margin-right: 10px;
 
-      &:hover { opacity: 0.4; }
+      &:last-of-type { margin-right: 0; }
     }
   }
 
-  &__language {
-    float: right;
+  &__link {
+    padding: 0;
+    margin: 0;
 
-    &-link {
-      float: left;  
-      font-size: 14px;
-      padding: 0 8px 0 8px;
-      border-right: 1px solid $colorBaseLight;
-      color: $colorFontLight;
-      text-transform: uppercase;
-      text-decoration: none;      
-      
-      &:last-of-type {
-        border-right: none;
-        padding-right: 0;
-      }
+    &:hover { opacity: 0.4; }
+  }
+}
 
-      &:hover { color: $colorStateHover; }
+.language {
 
-      &_active { color: $colorStateActive; }
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  &__item {
+    padding: 0 8px 0 8px;
+    border-right: 1px solid $colorBaseLight;
+
+    &:last-of-type {
+      border-right: none;
+      padding-right: 0;
     }
+
+    @include mediaquery (xs) {
+      &:first-of-type { padding-left: 0; }
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    color: $colorFontLight;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover { color: $colorStateHover; }
+
+    &_active { color: $colorStateActive; } 
   }
 }

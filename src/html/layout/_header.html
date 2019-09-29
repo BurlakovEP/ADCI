@@ -1,44 +1,51 @@
 <div class="header">
-	<div class="container">
+	<div class="header__container container">
 		<div class="header__row">
 			<img class="header__logo" src="img/header-logo.png" alt="logo">
-			<button class="header__reserved">
-				Area Riservata
-				<img class="header__icon" src="img/header-icon-lock.png" alt="icon-lock">
-			</button>
-			<nav class="header__navbar navbar">
-				<ul class="navbar__list">
-					<li class="navbar__item">
-						<a class="navbar__link navbar__link_active" href="#">Home</a>
-					</li>
-					<li class="navbar__item">
-						<a class="navbar__link" href="#">Azienda</a>
-						<ul class="navbar__list navbar__list_dropdown">
-							<li class="navbar__item">
-								<a class="navbar__link" href="#">Storia</a>
-							</li>
-							<li class="navbar__item">
-								<a class="navbar__link" href="#">MM Design</a>
-							</li>
-							<li class="navbar__item">
-								<a class="navbar__link" href="#">Designer</a>
-							</li>
-							<li class="navbar__item">
-								<a class="navbar__link" href="#">Certificazioni</a>
-							</li>
-						</ul>
-					</li>
-					<li class="navbar__item">
-						<a class="navbar__link" href="#">Collezioni</a>
-					</li>
-					<li class="navbar__item">
-						<a class="navbar__link" href="#">News</a>
-					</li>
-					<li class="navbar__item">
-						<a class="navbar__link" href="#">Contatti</a>
-					</li>
-				</ul>
-			</nav>
+			<div class="header__navigation">
+				<button class="header__reserved">
+					Area Riservata
+					<img class="header__icon" src="img/header-icon-lock.png" alt="icon-lock">
+				</button>
+				<div class="header__toggle toggle">
+					<span class="toggle__line"></span>
+					<span class="toggle__line"></span>
+					<span class="toggle__line"></span>
+				</div>
+				<nav class="header__navbar navbar navbar_invisible">
+					<ul class="navbar__list">
+						<li class="navbar__item">
+							<a class="navbar__link navbar__link_active" href="#">Home</a>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__link" href="#">Azienda</a>
+							<ul class="navbar__list navbar__list_dropdown">
+								<li class="navbar__item">
+									<a class="navbar__link" href="#">Storia</a>
+								</li>
+								<li class="navbar__item">
+									<a class="navbar__link" href="#">MM Design</a>
+								</li>
+								<li class="navbar__item">
+									<a class="navbar__link" href="#">Designer</a>
+								</li>
+								<li class="navbar__item">
+									<a class="navbar__link" href="#">Certificazioni</a>
+								</li>
+							</ul>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__link" href="#">Collezioni</a>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__link" href="#">News</a>
+						</li>
+						<li class="navbar__item">
+							<a class="navbar__link" href="#">Contatti</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 	</div>
 </div>

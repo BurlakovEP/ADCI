@@ -3,12 +3,9 @@
 #slide-3 { background-image: url(../img/main-slide-3.png); }
 
 .slider {
-	position: absolute;	
-  left: 0;
-  right: 0;
-  top: 130px;
-	bottom: 0;
+	display: flex;
 	z-index: $zIndexSlider;
+	flex-grow: 1;
 
 	&__group {
 		width: 100%;
@@ -29,53 +26,90 @@
 		}
 	}
 	
-	&__wrap {	height: 100%;	}
+	&__container {	
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
 
-	&__description {		
-		position: absolute;
-		right: 0;
-		top: 50%;
-		width: 510px;
-		padding: 13px 18px 17px 28px;
-		margin-right: -20px;
+	&__description {
 		background-color: #ffffffcc;
+
+		@include mediaquery (xs) {
+			width: 90%;
+			margin: 0 auto;
+			padding: 5px 10px;
+		}
+
+		@include mediaquery (sm) {
+			width: 100%;
+			margin: 0 auto;
+			padding: 5px 10px;
+		}
+
+		@include mediaquery (md) {
+			width: 400px;
+			margin-right: -10px;
+			padding: 10px 15px;
+		}
+
+		@include mediaquery (lg) {
+			width: 450px;
+			margin-right: -5px;
+			padding: 10px 15px;
+		}
+
+		@include mediaquery (xl) {
+			width: 510px;
+			padding: 13px 18px 17px 28px;
+			margin-right: -15px;
+		}
 	}
 	
 	&__headline {
-		margin: 0 0 25px 0;
-		font-size: 30px;
 		font-family: "Playfair-BoldItalic";		
 		text-transform: uppercase;
 		color: $colorFontDark;
+
+		@include mediaquery (xs) { font-size: 20px; margin: 0 0 10px 0; }
+		@include mediaquery (sm) { font-size: 24px; margin: 0 0 15px 0; }
+		@include mediaquery (md) { font-size: 24px; margin: 0 0 15px 0; }
+		@include mediaquery (lg) { font-size: 26px; margin: 0 0 15px 0; }
+		@include mediaquery (xl) { font-size: 30px; margin: 0 0 25px 0; }
 	}
 
 	&__text {
-		font-size: 18px;
 		font-family: "OpenSans-Regular";
 		line-height: 1.3;
 		color: $colorFontDark;
+
+		@include mediaquery (xs) { font-size: 14px; }
+		@include mediaquery (sm) { font-size: 16px; }
+		@include mediaquery (md) { font-size: 16px; }
+		@include mediaquery (lg) { font-size: 18px; }
 	}
 		
 	&__paging {
 		position: absolute; 
 		bottom: 35px;
 		width: 100%;
-		text-align: center;
+		display: flex;
+		justify-content: center;
 	}
 	
 	&__dots {
-		@include clearfix;		
 		padding: 0;
 		margin: 0;
-		display: inline-block;
-		list-style: none;
+		list-style: none;		
+		display: flex;
+		justify-content: space-between;
+
+		@include mediaquery (xs) { width: 50px; }
+		@include mediaquery (sm) { width: 62px; }
 	}
 
 	&__dot {
-		float: left;
-		width: 14px;
-		height: 14px;		
-		margin: 0 10px 0 0;
 		border-radius: 50%;
 		border: 2px solid $colorBaseDark;
 		background-color: $colorBaseLight;
@@ -85,5 +119,8 @@
 		&:hover {	background-color: $colorStateHover; }
 		
 		&_active { background-color: $colorStateActive; }
+
+		@include mediaquery (xs) { width: 12px; height: 12px;	}
+		@include mediaquery (sm) { width: 14px; height: 14px;	}
 	}
 }

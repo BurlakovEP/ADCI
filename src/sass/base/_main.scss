@@ -1,10 +1,17 @@
 .main {
   height: 100vh;
-	position: relative;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 1200px;
   position: relative;
+  margin: 0 auto;  
+
+  @include mediaquery (xs) { max-width: 100%; }
+  @include mediaquery (sm) { max-width: 540px; }
+  @include mediaquery (md) { max-width: 720px; }
+  @include mediaquery (lg) { max-width: 960px; }
+  @include mediaquery (xl) { max-width: 1200px; }
 }

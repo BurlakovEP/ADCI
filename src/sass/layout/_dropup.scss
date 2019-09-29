@@ -3,109 +3,148 @@
 	width: 100%;
 	bottom: 0;
 
+	&__window {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	&__button {
 		position: relative;
-		margin: 0 auto;
 		width: 84px;
-		height: 27px;
-		display: block;
+		height: 30px;
+		padding: 0;
 		border: none;
-		background-color: $colorBaseLight;		
 		outline: none;		
-		transition: top linear 0.9s;
+		background-color: $colorBaseLight;		
 		z-index: $zIndexDropup;
-		cursor: pointer;
-		
+  	cursor: pointer;
+
+		@include mediaquery (xs) {
+			width: 70px;
+			height: 25px;
+		}
+
 		&:before, &:after {
       position: absolute;      
       bottom: 2px;
       content: ' ';
       height: 22px;
       width: 2px;
-      background-color: $colorBaseDark;
+			background-color: $colorBaseDark;
+			
+			@include mediaquery (xs) { height: 18px; }
 		}
 		
-		&:before { left: 33px; }		
-		&:after {	right: 33px; }
+		&:before {
+			left: 33px;
+			@include mediaquery (xs) { left: 27px; }
+		}
+
+		&:after {
+			right: 33px;
+			@include mediaquery (xs) { right: 27px; }
+		}
 		
 		&_open {
-			top: 172px;
-
 			&:before { transform: rotate(50deg); }			
 			&:after {	transform: rotate(-50deg); }			
 		}
 
 		&_close {
-			top: 0px;
-
 			&:before { transform: rotate(-50deg); }			
 			&:after {	transform: rotate(50deg); }			
 		}
 	}
 
 	&__content {
-		@include clearfix;
-		position: relative;
-		transition: top linear 0.9s;		
+		display: flex;
 		z-index: $zIndexDropup;
+		overflow: hidden;
+		flex-wrap: wrap;
 
-		&_visible {	top: 0px;	}
-		&_invisible {	top: 172px;	}
+		&_visible {	height: auto;	}
+		&_invisible {	height: 0;	}
+	}	
+}
+
+.benefit {	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 12px 15px 10px;
+
+	@include mediaquery (xs) {
+		width: 90%;
+		margin: 0 auto;
+		padding: 5px 10px;
 	}
 
-	&__column {
-		position: relative;
-		float: left;
-		width: 33.333333%;
-		height: 172px;
-		padding: 15px 15px 0 15px;		
+	@include mediaquery (sm) { width: 33.333333%; }
 
-		&_neutral {
-			background-color: $colorSpecialNeutral;
+	&_neutral {
+		background-color: $colorSpecialNeutral;
 
-			& > .dropup__title, & > .dropup__text { color: $colorFontDark;	}
-			& > .dropup__note {
-				color: $colorFontLight;
-				text-decoration: underline;
-			}
-		}
-
-		&_bright {
-			background-color: $colorBaseLight;
-
-			& > .dropup__title,
-			& > .dropup__text,
-			& > .dropup__note { color: $colorFontDark; }
-		}
-
-		&_dark {
-			background-color: $colorBaseDark;
-
-			& > .dropup__title,
-			& > .dropup__text,
-			& > .dropup__note { color: $colorFontLight; }
+		& .benefit__title, & .benefit__text { color: $colorFontDark; }
+		& .benefit__note {
+			color: $colorFontLight;
+			text-decoration: underline;
 		}
 	}
 
-	&__title {
-		font-size: 27px;
+	&_bright {
+		background-color: $colorBaseLight;
+
+		& .benefit__title,
+		& .benefit__text,
+		& .benefit__note { color: $colorFontDark; }
+	}
+
+	&_dark {
+		background-color: $colorBaseDark;
+
+		& .benefit__title,
+		& .benefit__text,
+		& .benefit__note { color: $colorFontLight; }
+	}
+
+	&__title {		
 		font-family: "Playfair-Bold";
+
+		@include mediaquery (xs) { font-size: 18px; }
+		@include mediaquery (sm) { font-size: 18px; }
+		@include mediaquery (md) { font-size: 23px; }
+		@include mediaquery (lg) { font-size: 27px; }
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
 	}
 
 	&__text {
-		position: absolute;
-		font-size: 15px;
 		font-family: "OpenSans-Regular";		
-		line-height: 1.6;		
-		bottom: 42px;		
+		line-height: 1.6;
+		margin-top: 5px;
+
+		@include mediaquery (xs) { font-size: 14px; }
+		@include mediaquery (sm) { font-size: 12px; }
+		@include mediaquery (md) { font-size: 13px; }
+		@include mediaquery (lg) { font-size: 15px; }
 	}
 
 	&__note {
-		position: absolute;
-		font-size: 17px;
 		font-family: "OpenSans-Regular";
-		float: right;		
-		right: 20px;
-		bottom: 10px;
+		text-align: right;
+		margin-top: 15px;
+
+		@include mediaquery (xs) { 
+			font-size: 12px;
+			margin-top: 5px;
+		}
+
+		@include mediaquery (sm) { font-size: 12px; }
+		@include mediaquery (md) { font-size: 15px; }
+		@include mediaquery (lg) { font-size: 17px; }
 	}
 }
